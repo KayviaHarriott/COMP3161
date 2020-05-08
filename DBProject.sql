@@ -26,7 +26,7 @@ create table users(
    primary key(userId)
 ); 
 
-create table group(
+create table groups(
    --appoints users to a friend group
    --       We also need do do some corrections so that it makes more sense generally
    --group posts are apart of a group
@@ -43,23 +43,34 @@ create table moderator(
    -- moderates a group 
    --creates group posts
    --manages group members
-   --is a moderator a user?
-   --once a user has a moderator id do they keep the same id in all groups?
+   --is a moderator a user?yes
+   --so should we have like a composite key type thing or foreign key idk lol..to show that a moderator is a user?
+   --once a user has a moderator id do they keep the same id in all groups?if the 
+   --if the person is a moderator in one group it doesn't transfer to another group automatically, i think
+   -- yeah i get that but like what happend when i am in two groups and im a moderator in both...do i have to diff ids?
+   --i think its up to us to decide, we could just use the user's id as the moderator id as a reference only once they've been made a moderator
+   --thats smart but how would that go....ooohhhhh yesssss makes sense...ah
+   -- i think it works as an answer for both problems, so it just needs to be a foreign key
 
    groupid 	varchar(15)	not null unique,
    moderatorID varchar(15)	not null,
    primary key(moderatorID),
-   foreign key(groupid) references groups(groupid) on update cascade on delete cascade	
+   foreign key(groupid) references groups(groupid) on update cascade on delete cascade,
+   foreign key(moderatorID) references users(userid) on delete cascade 
 );
 
 create table profile(
    --modifies a user
    --has an album
+   --the profile Id...if it is unique and so is the user...why is it needed?
+   --it probably isn't, because a user has a profile and the profile can't exist without the user --yup
+   --but then we need to decide what the function this table actually has since we can't just drop it, i think --yeah....we cant its one of the core things
 
    userId 	varchar(15)	not null unique,
    profileid varchar(15) not null unique,
    primary key(profileid),
-   foreign key(userId) references users(userId) on update cascade on delete cascade
+   foreign key(userId) references users(userId) on update cascade on delete cascade,
+   foreign key (albumid) references album(albumid) on update cascade on delete cascade
 );
 
 create table album(
@@ -73,7 +84,7 @@ create table album(
 
 create table posts(
    --can include pictures
-   --creates a user     ???
+   --can't create a user
 
    postid varchar(15) not null unique,
    content varchar(15) not null,
