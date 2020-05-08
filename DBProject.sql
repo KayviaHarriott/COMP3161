@@ -43,6 +43,8 @@ create table moderator(
    -- moderates a group 
    --creates group posts
    --manages group members
+   --is a moderator a user?
+   --once a user has a moderator id do they keep the same id in all groups?
 
    groupid 	varchar(15)	not null unique,
    moderatorID varchar(15)	not null,
