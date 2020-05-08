@@ -12,12 +12,13 @@ drop table IF EXISTS posts;
 drop table IF EXISTS friendgroup;
 drop table IF EXISTS friend;
 drop table IF EXISTS users;
-
+ 
 
 create table users(
-   --can add a friend 
-   -- creates posts
+   --can add a friend  
+   -- creates posts : make sure posts has a foreign key of the user id
    -- modifies profile
+   -- creates a user
 
    userId varchar(15) not null unique,
    name varchar(15)	not null,
@@ -25,9 +26,9 @@ create table users(
    primary key(userId)
 ); 
 
-create table groups(
-   --appoints users
-   --creates a user?       We also need do do some corrections so that it makes more sense generally
+create table group(
+   --appoints users to a friend group
+   --       We also need do do some corrections so that it makes more sense generally
    --group posts are apart of a group
    -- could we add a has a relationship here that says group has group post?
 
@@ -41,6 +42,7 @@ create table groups(
 create table moderator(
    -- moderates a group 
    --creates group posts
+   --manages group members
 
    groupid 	varchar(15)	not null unique,
    moderatorID varchar(15)	not null,
@@ -75,6 +77,7 @@ create table posts(
    content varchar(15) not null,
    viewers FLOAT not null,
    primary key(postid)	
+
 );
 
 create table picture(
@@ -120,7 +123,7 @@ create table friend(
 /*
 
 Tables:
-groups(groupid,moderatorID,memberlist,contenteditors)
+group(groupid,moderatorID,memberlist,contenteditors)
 moderator(groupid,moderatorID)
 profile(userId,profileid)
 album(albumid,profileid)
@@ -143,4 +146,3 @@ Assumptions:
 -	A user can designate another user as a friend, in one of three specific categories.
 
 */
-
