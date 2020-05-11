@@ -1,4 +1,4 @@
---Lois-Anne Hall April 24,2020, May 7,2020 - 620117954
+--Lois-Anne Hall April 24,2020, May 7,2020, May 11,2020 - 620117954
 --K-Cyanne Beckford April 24, 2020, May 7,2020 - 620123796
 --Dwight Muschette May 7,2020 - 620120113
 --Kayvia Harriott May 7,2020 - 620118463
