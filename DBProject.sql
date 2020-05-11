@@ -1,4 +1,4 @@
---Lois-Anne Hall April 24,2020, May 7,2020, May 11,2020 - 620117954
+                                                                                                                                                                                                          --Lois-Anne Hall April 24,2020, May 7,2020, May 11,2020 - 620117954
 --K-Cyanne Beckford April 24, 2020, May 7,2020 - 620123796
 --Dwight Muschette May 7,2020 - 620120113
 --Kayvia Harriott May 7,2020 - 620118463
@@ -33,8 +33,8 @@ create table groups(
    --group posts are apart of a group
    -- could we add a has a relationship here that says group has group post?
 
-   groupid 	varchar(15)	not null unique,
-   moderatorID varchar(15)	not null,
+   groupid 	integer	not null unique,
+   moderatorID integer	not null,
    memberlist varchar(200)	not null,
    contenteditors varchar(50)	not null,
    primary key(groupid)
@@ -53,8 +53,8 @@ create table moderator(
    --thats smart but how would that go....ooohhhhh yesssss makes sense...ah
    -- i think it works as an answer for both problems, so it just needs to be a foreign key
 
-   groupid 	varchar(15)	not null unique,
-   moderatorID varchar(15)	not null,
+   groupid 	integer not null unique,
+   moderatorID integer	not null,
    primary key(moderatorID),
    foreign key(groupid) references groups(groupid) on update cascade on delete cascade,
    foreign key(moderatorID) references users(userid) on delete cascade 
@@ -67,8 +67,8 @@ create table profile(
    --it probably isn't, because a user has a profile and the profile can't exist without the user --yup
    --but then we need to decide what the function this table actually has since we can't just drop it, i think --yeah....we cant its one of the core things
 
-   userId 	varchar(15)	not null unique,
-   profileid varchar(15) not null unique,
+   userId 	integer	not null unique,
+   profileid integer not null unique,
    primary key(profileid),
    foreign key(userId) references users(userId) on update cascade on delete cascade,
    foreign key (albumid) references album(albumid) on update cascade on delete cascade
@@ -77,8 +77,8 @@ create table profile(
 create table album(
    -- has a picture
 
-   albumid varchar(15) not null unique,
-   profileid varchar(15) not null,
+   albumid integer not null unique,
+   profileid integer not null,
    primary key(albumid),
    foreign key(profileid) references profile(profileid) on update CASCADE on delete cascade,
    foreign key(pictureid) references picture(pictureid) on update CASCADE on delete cascade	
@@ -93,7 +93,7 @@ create table posts(
    --loool ik...yeah we can
    --so the relationship is supposed to be a post is created by a user...so it should have a foreign key of user Id right? yeah definitely
 
-   postid varchar(15) not null unique,
+   postid integer not null unique,
    content varchar(15) not null,
    viewers INTEGER not null,
    primary key(postid),
@@ -108,8 +108,8 @@ create table picture(
    -- can become a profile picture (profile pictures cant exist without a picture in the album)
    --agreed
 
-   pictureid varchar(15) not null unique,
-   postid varchar(15) not null,
+   pictureid INTEGER not null unique,
+   postid integer not null,
    albumid varchar(15) not null,
    primary key(pictureid),
    foreign key(postid) references posts(postid) on update CASCADE on delete cascade,
@@ -121,7 +121,7 @@ create table friendgroup(
    -- is a : relative, work, school    ???
    --is this trying to say that a friend group has a category? and a category falls under either relative work or school?
 
-   fgroupid varchar(15) not null unique,
+   fgroupid integer not null unique,
    friendlist varchar(200) not null,
    name varchar(50) not null unique,
    primary key(fgroupid)
@@ -149,9 +149,8 @@ create table friend(
    --a person can have in a single table
    
 
-   friendId varchar(15) not null unique,
-   userId varchar(15) not null,
-   name varchar(50) not null,
+   friendId integer not null unique,
+   userId integer not null,
    primary key(friendId),
    foreign key(userId) references users(userId) on update CASCADE on delete cascade
 );
@@ -287,3 +286,4 @@ Insert into users VALUES (97,"Lee Rodriguez","F","2009-03-28");
 Insert into users VALUES (98,"Alyssa Sanchez","F","2008-02-16");
 Insert into users VALUES (99,"Sarah Dennis","M","1986-02-28");
 Insert into users VALUES (100,"Tonya Cannon","F","2017-10-25");
+
