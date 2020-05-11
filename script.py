@@ -17,7 +17,7 @@ def writetofile():
     for i in range(100):
         randomName = fake.name()
         randomGender =secrets.choice(gender)
-        randomDOB = fake.date()
+        randomDOB = fake.date()f
         f.write("Insert into users VALUES (%d,\"%s\",\"%s\",\"%s\");\r\n" % (i+1, randomName, randomGender, randomDOB))
     
     f.close()
