@@ -22,8 +22,8 @@ create table users(
    modifies profile
    creates a user*/
 
-   userId integer not null unique,
-   name varchar(15)  not null,
+   userId INTEGER not null unique,
+   name varchar(15)	not null,
    gender VARCHAR(1) not null,
    dob DATE,
    primary key(userId)
@@ -37,10 +37,10 @@ create table groups(
    could we add a has a relationship here that says group has group post?
    */
 
-   groupid  integer  not null unique,
-   moderatorID integer  not null,
-   memberlist varchar(200) not null,
-   contenteditors varchar(50) not null,
+   groupid 	integer	not null unique,
+   moderatorID integer	not null,
+   memberlist varchar(200)	not null,
+   contenteditors varchar(50)	not null,
    primary key(groupid)
 );
 
@@ -58,8 +58,8 @@ create table moderator(
    thats smart but how would that go....ooohhhhh yesssss makes sense...ah
     i think it works as an answer for both problems, so it just needs to be a foreign key
    */
-   groupid  integer not null unique,
-   moderatorID integer  not null,
+   groupid 	integer not null unique,
+   moderatorID integer	not null,
    primary key(moderatorID),
    foreign key(groupid) references groups(groupid) on update cascade on delete cascade,
    foreign key(moderatorID) references users(userid) on delete cascade 
@@ -74,12 +74,11 @@ create table profile(
    but then we need to decide what the function this table actually has since we can't just drop it, i think --yeah....we cant its one of the core things
    */ 
 
-   userId integer not null,
+   userId 	integer	not null unique,
    profileid integer not null unique,
-   albumid integer not null,
+   albumid integer not null unique,
    primary key(profileid),
    foreign key(userId) references users(userId) on update cascade on delete cascade
-   #foreign key (albumid) references album(albumid) on update cascade on delete cascade
 );
 
 create table album(
@@ -90,9 +89,7 @@ create table album(
    pictureid integer not null,
    primary key(albumid),
    foreign key(profileid) references profile(profileid) on update CASCADE on delete cascade
-   #foreign key(pictureid) references picture(pictureid) on update CASCADE on delete cascade  
 );
-
 
 create table posts(
    /*
@@ -124,10 +121,10 @@ create table picture(
 
    pictureid integer not null unique,
    postid integer not null,
-   albumid integer not null,
+   albumid varchar(15) not null,
    primary key(pictureid),
    foreign key(postid) references posts(postid) on update CASCADE on delete cascade,
-   foreign key(albumid) references album(albumid) on update CASCADE on delete cascade  
+   foreign key(albumid) references album(albumid) on update CASCADE on delete cascade	
 );
 
 
@@ -154,7 +151,7 @@ create table friend(
    of doubling up on the data4
    yh using the userid sounds like a better idea, gets rid of an unnecessary id
    lol idk how to do that though...or maybe i do...im tired
-   is added by a user
+    is added by a user
    can view posts
    maybe we just leave it in as a foreign key. my concern is how we relate the many friends
    same....DWIGHT!!!!! We need your brain!!!!!!
@@ -167,14 +164,17 @@ create table friend(
    */
 
    userId integer not null,
-   friendId integer not null,
+   friendId integer not null unique,
    friendtype varchar(80) not null,
-   primary key(friendId, userId),
+   primary key(friendId),
    foreign key(userId) references users(userId) on update CASCADE on delete cascade
 );
 
-ALTER TABLE profile ADD CONSTRAINT FK_albumid FOREIGN KEY(albumid) REFERENCES album(albumid) on update cascade on delete cascade;
-ALTER TABLE album ADD CONSTRAINT FK_pictureid FOREIGN KEY(pictureid) REFERENCES picture(pictureid) on update CASCADE on delete cascade;
+ALTER TABLE profile ADD CONSTRAINT FK_albumid FOREIGN KEY(albumid)
+   REFERENCES album(albumid) on update CASCADE on delete cascade;
+
+ALTER TABLE album ADD CONSTRAINT FK_picureid FOREIGN KEY(pictureid)
+   REFERENCES picture(pictureid) on updat
 
 
 /*############################################ 
@@ -198,14 +198,14 @@ users(userId,name,dob)
 
 
 Assumptions:
--  A user can only have one profile and each user has to have a profile.
--  A profile can only be created by a user.
--  An album can contain many pictures, but multiple copies of one picture can be in other albums
--  One picture can be designated as a profile picture.
--  Multiple posts can be created by a user
--  The user can create multiple groups and designate a moderator for the created groups.
--  Group posts are only created by a moderator.
--  A user can designate another user as a friend, in one of three specific categories.
+-	A user can only have one profile and each user has to have a profile.
+-	A profile can only be created by a user.
+-	An album can contain many pictures, but multiple copies of one picture can be in other albums
+-	One picture can be designated as a profile picture.
+-	Multiple posts can be created by a user
+-	The user can create multiple groups and designate a moderator for the created groups.
+-	Group posts are only created by a moderator.
+-	A user can designate another user as a friend, in one of three specific categories.
 
 */
 
