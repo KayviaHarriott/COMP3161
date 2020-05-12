@@ -74,9 +74,9 @@ create table profile(
    but then we need to decide what the function this table actually has since we can't just drop it, i think --yeah....we cant its one of the core things
    */ 
 
-   userId integer not null unique,
+   userId integer not null,
    profileid integer not null unique,
-   albumid integer not null unique,
+   albumid integer not null,
    primary key(profileid),
    foreign key(userId) references users(userId) on update cascade on delete cascade
    #foreign key (albumid) references album(albumid) on update cascade on delete cascade
@@ -166,14 +166,14 @@ create table friend(
    a person can have in a single table
    */
 
-   userId integer not null unique,
-   friendId integer not null unique,
+   userId integer not null,
+   friendId integer not null,
    friendtype varchar(80) not null,
-   primary key(friendId),
+   primary key(friendId, userId),
    foreign key(userId) references users(userId) on update CASCADE on delete cascade
 );
 
-ALTER TABLE profile ADD CONSTRAINT FK_albumid FOREIGN KEY(albumid) REFERENCES album(albumid) on update CASCADE on delete cascade;
+ALTER TABLE profile ADD CONSTRAINT FK_albumid FOREIGN KEY(albumid) REFERENCES album(albumid) on update cascade on delete cascade;
 ALTER TABLE album ADD CONSTRAINT FK_pictureid FOREIGN KEY(pictureid) REFERENCES picture(pictureid) on update CASCADE on delete cascade;
 
 
