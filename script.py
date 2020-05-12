@@ -12,13 +12,17 @@ def writetofile():
 
     #name = fake.name_male()
 
-    gender = ["M", "F"]
+    """gender = ["M", "F"]
 
     for i in range(100):
         randomName = fake.name()
         randomGender =secrets.choice(gender)
         randomDOB = fake.date()f
-        f.write("Insert into users VALUES (%d,\"%s\",\"%s\",\"%s\");\r\n" % (i+1, randomName, randomGender, randomDOB))
+        f.write("Insert into users VALUES (%d,\"%s\",\"%s\",\"%s\");\r\n" % (i+1, randomName, randomGender, randomDOB))"""
+
+
+    for i in range (100):
+
     
     f.close()
 
