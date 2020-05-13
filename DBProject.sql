@@ -42,11 +42,11 @@ create table groups(
 
 create table groupsmembers(
    groupid integer not null,
-   userid integer,
+   userId integer,
    typemember varchar(6) not null,
    primary key(groupid,userid),
-   foreign key (userid) references users(userId) on delete cascade, 
-   foreign key (groupid) references groups(userId) on delete cascade 
+   foreign key (userId) references users(userId) on delete cascade, 
+   foreign key (groupid) references groups(groupid) on delete cascade 
 );
 
 
@@ -80,7 +80,7 @@ create table album(
 
 create table posts(
    postid integer not null unique,
-   posttype varchar not null, 
+   posttype varchar(50) not null, 
    userid integer not null,
    primary key(postid),
    foreign key(userid) references users(userid) on update cascade on delete cascade
@@ -89,15 +89,15 @@ create table posts(
 
 create table picture(
    pictureid integer not null unique,
-   albumid varchar(15) not null,
-   primary key(albumid,pictureid),   
+   albumid integer not null,
+   primary key(albumid, pictureid),   
    foreign key(albumid) references album(albumid) on update CASCADE on delete cascade	
 );
 
 
 
 create table friend(
-    userId integer not null,
+   userId integer not null,
    friendId integer not null unique,
    friendgroup varchar(80) not null,
    primary key(friendId),
@@ -146,28 +146,34 @@ Assumptions:
 
 
 /* STORED PROCEDURES */
+DELIMITER //
+ CREATE PROCEDURE findEmployees(IN company varchar(20))
+ BEGIN
+ SELECT person_name FROM works WHERE company_name=company;
+ END //
+DELIMITER ;
 
-/*
+
 DELIMITER // 
-   CREATE PROCEDURE finduser (In user_id integer) 
+   CREATE PROCEDURE finduser(in user_id integer) 
    BEGIN
       SELECT * FROM users
       WHERE userid = user_id;
-    END//
+    END //
 DELIMITER ;
 
-CALL finduser();
+CALL finduser(1);
 
 DELIMITER // 
    CREATE PROCEDURE findgroups (In id integer) 
    BEGIN
-      SELECT groupname FROM groups grp
+      SELECT groupname FROM groups grp /*someone editing here?*/
       JOIN groupsmembers grpmem ON grp.groupid = grpmem.groupid
       WHERE grpmem.userid = id;
     END//
 DELIMITER ;
 
-CALL findgroups();
+CALL findgroups(2);
 
 DELIMITER // 
    CREATE PROCEDURE findpost (In id integer) 
@@ -176,6 +182,8 @@ DELIMITER //
       WHERE pt.userid = id;
     END//
 DELIMITER ;
+
+CALL findposts(2);
 
 DELIMITER // 
    CREATE PROCEDURE showfriends (In id integer) 
@@ -186,6 +194,6 @@ DELIMITER //
     END//
 DELIMITER ;
 
-CALL findposts();
-*/
+CALL showfriends(1);
+
 
