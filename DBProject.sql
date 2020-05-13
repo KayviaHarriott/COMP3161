@@ -81,9 +81,9 @@ create table album(
 create table posts(
    postid integer not null unique,
    posttype varchar(50) not null, 
-   userid integer not null,
+   userId integer not null,
    primary key(postid),
-   foreign key(userid) references users(userid) on update cascade on delete cascade
+   foreign key(userId) references users(userId) on update cascade on delete cascade
 
 );
 
