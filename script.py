@@ -1,4 +1,9 @@
-#created by Lois-Anne Hall
+#
+#Lois-Anne Hall April 24,2020, May 7,2020, May 11,2020 - 620117954                                                                                                                                                                                                        --Lois-Anne Hall April 24,2020, May 7,2020, May 11,2020 - 620117954
+#K-Cyanne Beckford April 24, 2020, May 7,2020 - 620123796
+#Dwight Muschette May 7,2020 - 620120113
+#Kayvia Harriott May 7,2020 - 620118463 
+#Wayne Clarke May 7, 2020 - 620091440
 
 from faker import Faker
 import secrets
@@ -93,7 +98,7 @@ def writetofile():
     for i in range(500000):
 
             userid = i + 1
-            profileid = random.randint(500000)            
+            profileid = random.randint(1,500000)            
             f.write("Insert into profiles VALUES (%d,%d);\r" % (userid, profileid))
     
     
