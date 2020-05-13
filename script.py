@@ -22,8 +22,8 @@ def writetofile():
     for i in range(500000):
         randomName = fake.name()
         randomGender =secrets.choice(gender)
-        randomDOB = fake.date()f
-        f.write("Insert into users VALUES (%d,\"%s\",\"%s\",\"%s\");\r\n" % (i+1, randomName, randomGender, randomDOB))
+        randomDOB = fake.date()
+        f.write("Insert into users VALUES (%d,\"%s\",\"%s\",\"%s\");\r" % (i+1, randomName, randomGender, randomDOB))
 
 
     #for i in range (100):
@@ -34,14 +34,14 @@ def writetofile():
 
     friendtypes = ["Relative", "Work", "School"]
 
-        for i in range(500000):
+    for i in range(500000):
 
-            id = i + 1
-            ftype = secrets.choice(friendtypes)
-            rand1 = random.randint(1,500000)
+        id = i + 1
+        ftype = secrets.choice(friendtypes)
+         rand1 = random.randint(1,500000)
 
-            f.write("Insert into friend VALUES (%d,%d,\"%s\");\r" % ( id, rand1,ftype))
-            f.write("Insert into friend VALUES (%d,%d,\"%s\");\r" % ( rand1, id,ftype)) 
+        f.write("Insert into friend VALUES (%d,%d,\"%s\");\r" % ( id, rand1,ftype))
+        f.write("Insert into friend VALUES (%d,%d,\"%s\");\r" % ( rand1, id,ftype)) 
    
     #######################
     ##     Groups        ##
@@ -73,6 +73,66 @@ def writetofile():
 
             f.write("Insert into groupsmembers VALUES (%d,%d,\"%s\");\r" % (id, userID, tmember))
      
-    f.close()
+    #######################
+    ##   profile         ##
+    #######################
+    
+
+    for i in range(500000):
+
+            id = i + 1
+            albumid = random.randint(500000,1000000)            
+            f.write("Insert into profile VALUES (%d,%d);\r" % (id, albumid))
+    
+    
+   
+    #######################
+    ##   album           ##
+    #######################
+    
+
+    for i in range(500000):
+
+            id = i + 1
+            pictureid = random.randint(1000000,1500000)            
+            f.write("Insert into album VALUES (%d,%d);\r" % (id, albumid))
+          
+
+    #######################
+    ##   posts           ##
+    #######################
+    
+    posttype = ["image","text"]
+    for i in range(500000):
+            
+            postid = i + 1
+            userid = i + 1
+            ptype = secrets.choice(posttype)
+            albumid = random.randint(500000,1000000)            
+            f.write("Insert into posts VALUES (%d,\"%s\",%d);\r" % (postid, ptype, userid))
+
+    #######################
+    ##   picture         ##
+    #######################
+    
+
+    for i in range(500000):
+
+            pictureid = i + 1
+            albumid = random.randint(1000000,1500000)            
+            f.write("Insert into picture VALUES (%d,%d);\r" % (pictureid, albumid))
+            
+
+    #######################
+    ##   friend          ##
+    #######################
+    
+    groupnames = ["Anime Watching", "Biking Clubs", "TV Watchers"]
+    for i in range(500000):
+
+            userid = i + 1
+            rand1 = random.randint(1,500000)            
+            fgroup = secrets.choice(groupnames)
+            f.write("Insert into friend VALUES (%d,%d,\"%s\");\r" % (userid, rand1, fgroup))
 
 writetofile()
