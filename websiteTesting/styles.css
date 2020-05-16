@@ -1,0 +1,149 @@
+body{
+    background-color: rgb(255, 255, 255);
+    margin: 0px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+
+
+}
+
+.gridcontainer{
+    display: grid;
+    grid-template-areas:'menubar  menubar   menubar  menubar  menubar  menubar'
+                        'header   header    header   header   header   header'
+                        'space  space   space   space    space    space'
+                        'friends  friends   posts   posts    posts    posts'
+                        'friends  friends   posts   posts    posts    posts'
+                        'exinfo   exinfo    exinfo   exinfo   exinfo   exinfo'                        
+                        ;
+}
+
+ul{
+    list-style-type: none;
+}
+  
+li{
+    display: inline;
+}
+
+.menubar {
+    grid-area: menubar;
+    background: white;
+    padding-top: 5px;
+    padding-left: 15px;
+    box-shadow: 0px 0.8px 3px grey;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-right: 0px;
+    margin-top: 0px;
+    
+}
+
+.friends {
+    grid-area: friends;  
+    
+}
+
+.friendsbox{
+    margin-left: 13%;
+    margin-right: 2%;
+    padding: 3%;
+    box-shadow: 0px 0.8px 3px grey;
+}
+
+.belowfriends{
+    position: center;
+    margin-left: 13%;
+    margin-right: 2%;
+    padding: 3%;
+
+    display: flex; 
+    justify-content: center;
+    
+
+}
+
+.viewallfriends{
+    padding: 3%;
+    box-shadow: 0px 0.8px 3px grey;
+}
+
+.posts {
+    margin-right: 10%;
+    margin-left: 2%;
+    grid-area: posts;
+    box-shadow: 0px 0.8px 3px grey;
+    padding: 1%;
+}
+
+.exinfo {
+    grid-area: exinfo;
+    box-shadow: 0px 0.8px 3px grey;
+}
+
+.headerimage {
+    margin-top: -650px; 
+    position: absolute;  
+    margin-left: 5%;
+    z-index: -1;
+    max-width: 1300px;
+    box-shadow: 0px 0.8px 3px grey;
+    /* display: block; */
+}
+
+.profilepicture {
+    border-radius: 50%;
+    max-width: 180px; 
+}
+
+.headercontent{
+    padding-top: 20px;
+    padding-left: 30%;
+    grid-area: header;
+}
+
+.header{
+    color: white;
+    
+}
+
+
+.postscontent{
+    padding-left: 2%;
+    padding-top: 1%;
+    padding-bottom: 1%;
+    box-shadow: 0px 0.8px 3px grey;
+}
+
+
+
+
+
+/*--------------------------------------------------*/
+
+
+
+#faq:visited {
+    color: none;
+    text-decoration: none;
+}
+
+
+a:visited {
+    color: none;
+    text-decoration: none;
+}
+
+a {
+    color:none;
+}
+
+a:visited {
+    color: black;
+    text-decoration: white;
+} 
+
+a:hover {
+    color:none;
+}  
+a:active {
+    color:none;
+} 

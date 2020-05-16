@@ -5,6 +5,10 @@ Dwight Muschette May 7,2020 - 620120113
 Kayvia Harriott May 7,2020 - 620118463 
 Wayne Clarke May 7, 2020 - 620091440*/
 
+DROP DATABASE IF EXISTS DBProject; /*Added by Kay - 05/15/2020 -- START*/
+CREATE DATABASE DBProject;
+USE DBProject;                      /*Added by Kay - 05/15/2020 -- END*/
+
 drop table IF EXISTS groups;
 drop table If EXISTS groupsmembers;
 drop table IF EXISTS moderator;
@@ -146,6 +150,8 @@ Assumptions:
 
 
 /* STORED PROCEDURES */
+
+/*
 DELIMITER //
  CREATE PROCEDURE findEmployees(IN company varchar(20))
  BEGIN
@@ -194,6 +200,6 @@ DELIMITER //
     END//
 DELIMITER ;
 
-CALL showfriends(1);
+CALL showfriends(1); */
 
 
