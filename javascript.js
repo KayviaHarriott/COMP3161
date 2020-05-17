@@ -14,8 +14,8 @@ $(document).ready(function(){
         });
     }
 
-    function requestComments(txtrequest = ""){             
-        $.ajax("comment.php", {
+    function requestFriends(txtrequest = ""){             
+        $.ajax("getFriends.php", {
             method: 'GET'             
             
         }).done(function(response){
@@ -33,8 +33,8 @@ $(document).ready(function(){
         //requestMessage("cities");
     });
 
-    $("#lookup-comments").click(function(){
-        requestComments();
+    $("#getFriends").click(function(){
+        requestFriends();
         //requestMessage("cities");
     });
     

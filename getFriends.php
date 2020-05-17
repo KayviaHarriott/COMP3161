@@ -17,7 +17,7 @@ if (mysqli_connect_errno()) {
 
 
 //$query2 = "SELECT author.name, comment.comment FROM author INNER JOIN comment ON author.author_id=comment.comment_id;";
-$query2 = "SELECT * from users";
+$query2 = "select userId from friend where friendId=1;";
 
 if ($result = $conn->query($query2)) {
     echo nl2br("\n");
@@ -25,7 +25,7 @@ if ($result = $conn->query($query2)) {
     while ($row = $result->fetch_row()) {
         //echo $row[0], ": ";
         //echo nl2br("\n"); 
-        echo $row[1] , " ";
+        echo $row[0] , " ";
         echo nl2br("\n");        
        // echo nl2br("\n"); 
     }

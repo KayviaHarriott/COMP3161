@@ -1,4 +1,9 @@
-#created by Lois-Anne Hall
+#
+#Lois-Anne Hall April 24,2020, May 7,2020, May 11,2020 - 620117954                                                                                                                                                                                                        --Lois-Anne Hall April 24,2020, May 7,2020, May 11,2020 - 620117954
+#K-Cyanne Beckford April 24, 2020, May 7,2020 - 620123796
+#Dwight Muschette May 7,2020 - 620120113
+#Kayvia Harriott May 7,2020 - 620118463 
+#Wayne Clarke May 7, 2020 - 620091440
 
 from faker import Faker
 import secrets
@@ -19,7 +24,7 @@ def writetofile():
 
     gender = ["M", "F"]
 
-    for i in range(500):
+    for i in range(10):
         randomName = fake.name()
         randomGender =secrets.choice(gender)
         randomDOB = fake.date()
@@ -34,14 +39,14 @@ def writetofile():
 
     friendtypes = ["Relative", "Work", "School"]
 
-    for i in range(500):
+    for i in range(10):
 
         id = i + 1
         ftype = secrets.choice(friendtypes)
-         rand1 = random.randint(1,500)
+        rand1 = random.randint(1,10)
 
         f.write("Insert into friend VALUES (%d,%d,\"%s\");\r" % ( id, rand1,ftype))
-        f.write("Insert into friend VALUES (%d,%d,\"%s\");\r" % ( rand1, id,ftype)) 
+        #f.write("Insert into friend VALUES (%d,%d,\"%s\");\r" % ( rand1, id,ftype)) 
    
     #######################
     ##     Groups        ##
@@ -49,12 +54,12 @@ def writetofile():
     
     groupnames = ["Anime Watching", "Biking Clubs", "TV Watchers"]
 
-    for i in range(500):
+    for i in range(10):
 
             id = i + 1
             gnames = secrets.choice(groupnames)
             randomdate = "2020-05-12"#fake.date() #see if this can be in a certain time period
-            moderatorID = random.randint(1,500)
+            moderatorID = random.randint(1,500000)
             
 
             f.write("Insert into groups VALUES (%d,\"%s\",\"%s\",%d);\r" % (id, gnames, randomdate,moderatorID))
@@ -65,10 +70,10 @@ def writetofile():
     
     typemember = ["Content Editor", "Viewer"]
 
-    for i in range(500):
+    for i in range(10):
 
             id = i + 1
-            userID = random.randint(1,500) 
+            userID = random.randint(1,10) 
             tmember = secrets.choice(typemember)
 
             f.write("Insert into groupsmembers VALUES (%d,%d,\"%s\");\r" % (id, userID, tmember))
@@ -78,37 +83,35 @@ def writetofile():
     #######################
     
 
-    for i in range(500):
+    for i in range(10):
 
             id = i + 1
-            albumid = random.randint(500,1000)            
+            albumid = random.randint(1,10)            
             f.write("Insert into profile VALUES (%d,%d);\r" % (id, albumid))
     
-    
-   
+
     #######################
     ##   profiles        ##
     #######################
     
 
-    for i in range(500):
+    for i in range(10):
 
             userid = i + 1
-            profileid = random.randint(1,500)            
+            profileid = random.randint(1,10)            
             f.write("Insert into profiles VALUES (%d,%d);\r" % (userid, profileid))
     
     
    
-
     #######################
     ##   album           ##
     #######################
     
 
-    for i in range(500):
+    for i in range(10):
 
             id = i + 1
-            pictureid = random.randint(1000,1500)            
+            pictureid = random.randint(1,10)            
             f.write("Insert into album VALUES (%d,%d);\r" % (id, albumid))
           
 
@@ -117,12 +120,12 @@ def writetofile():
     #######################
     
     posttype = ["image","text"]
-    for i in range(500):
+    for i in range(10):
             
             postid = i + 1
             userid = i + 1
             ptype = secrets.choice(posttype)
-            albumid = random.randint(500,1000)            
+            albumid = random.randint(1,10)            
             f.write("Insert into posts VALUES (%d,\"%s\",%d);\r" % (postid, ptype, userid))
 
     #######################
@@ -130,10 +133,10 @@ def writetofile():
     #######################
     
 
-    for i in range(500):
+    for i in range(10):
 
             pictureid = i + 1
-            albumid = random.randint(1000,1500)            
+            albumid = random.randint(1,10)            
             f.write("Insert into picture VALUES (%d,%d);\r" % (pictureid, albumid))
             
 
@@ -142,12 +145,11 @@ def writetofile():
     #######################
     
     groupnames = ["Anime Watching", "Biking Clubs", "TV Watchers"]
-    for i in range(500):
+    for i in range(10):
 
             userid = i + 1
-            rand1 = random.randint(1,500)            
+            rand1 = random.randint(1,10)            
             fgroup = secrets.choice(groupnames)
             f.write("Insert into friend VALUES (%d,%d,\"%s\");\r" % (userid, rand1, fgroup))
-
 
 writetofile()

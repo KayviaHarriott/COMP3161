@@ -26,7 +26,6 @@ create table users(
    creates posts : make sure posts has a foreign key of the user id
    modifies profile
    creates a user*/
-
    userId integer not null unique,
    name varchar(100)	not null,
    gender VARCHAR(1) not null,
@@ -35,19 +34,18 @@ create table users(
 ); 
 
 create table groups(
-
    groupid 	integer	not null unique,
    groupname VARCHAR(100) not null,
    datecreated date not null,
-   moderatorID integer	not null,
-   primary key(groupid),
-   foreign key (moderatorID) references users(userId) 
+   /*moderatorID*/userId integer	not null, /*Edit: Kayvia 05/16/2020*/
+   primary key(groupid)/*,
+   foreign key (moderatorIDuserId) references users(userId) *//*Edit: Kayvia 05/16/2020*/
 );
 
 create table groupsmembers(
    groupid integer not null,
    userId integer,
-   typemember varchar(6) not null,
+   typemember varchar(50) not null, 
    primary key(groupid,userid),
    foreign key (userId) references users(userId) on delete cascade, 
    foreign key (groupid) references groups(groupid) on delete cascade 
@@ -60,7 +58,7 @@ create table profile(
    has an album   
    */    
    profileid integer not null unique,
-   albumid integer not null unique,
+   albumid integer not null /*unique*/,
    primary key(profileid)
 );
 
@@ -102,17 +100,21 @@ create table picture(
 
 create table friend(
    userId integer not null,
-   friendId integer not null unique,
+   friendId integer not null /*unique*/, /*Edit: Kayvia 05/16/2020*/
    friendgroup varchar(80) not null,
-   primary key(friendId),
+   primary key/*(friendId)*/(userId), /*Edit: Kayvia 05/16/2020*/
    foreign key(userId) references users(userId) on update CASCADE on delete cascade
 );
 
+
+/*Edit: Kayvia 05/16/2020* --These give errors for some reason/
+/*
 ALTER TABLE profile ADD CONSTRAINT FK_albumid FOREIGN KEY(albumid)
-   REFERENCES album(albumid) on update CASCADE on delete cascade;
+   REFERENCES album(albumid) on update CASCADE on delete cascade; 
+
 
 ALTER TABLE album ADD CONSTRAINT FK_picureid FOREIGN KEY(pictureid)
-   REFERENCES picture(pictureid) on update CASCADE on delete cascade;
+   REFERENCES picture(pictureid) on update CASCADE on delete cascade;*/
 
 
 
@@ -173,7 +175,7 @@ CALL finduser(1);
 DELIMITER // 
    CREATE PROCEDURE findgroups (In id integer) 
    BEGIN
-      SELECT groupname FROM groups grp /*someone editing here?*/
+      SELECT groupname FROM groups grp
       JOIN groupsmembers grpmem ON grp.groupid = grpmem.groupid
       WHERE grpmem.userid = id;
     END//
@@ -202,4 +204,137 @@ DELIMITER ;
 
 CALL showfriends(1); */
 
+
+
+Insert into users VALUES (1,"Katrina Warren","F","1998-12-30");
+Insert into users VALUES (2,"Tyler Bryant","F","1998-11-03");
+Insert into users VALUES (3,"David Thomas","F","2019-09-11");
+Insert into users VALUES (4,"Lee Harrison","M","2006-11-29");
+Insert into users VALUES (5,"Robert Conley","F","1988-10-19");
+Insert into users VALUES (6,"Terry Chambers MD","M","2014-04-20");
+Insert into users VALUES (7,"Jasmine Martinez","M","1989-06-12");
+Insert into users VALUES (8,"Matthew Grimes","F","1971-01-21");
+Insert into users VALUES (9,"Russell Mcpherson","M","1998-02-20");
+Insert into users VALUES (10,"Jennifer Castillo","F","1979-07-02");
+
+Insert into friend VALUES (1,5,"School");
+Insert into friend VALUES (2,8,"Work");
+Insert into friend VALUES (3,2,"Work");
+Insert into friend VALUES (4,2,"Work");
+Insert into friend VALUES (5,6,"School");
+Insert into friend VALUES (6,1,"Relative");
+Insert into friend VALUES (7,5,"School");
+Insert into friend VALUES (8,1,"Relative");
+Insert into friend VALUES (9,7,"School");
+Insert into friend VALUES (10,1,"Relative");
+
+Insert into groups VALUES (1,"Biking Clubs","2020-05-12",494239);
+Insert into groups VALUES (2,"Biking Clubs","2020-05-12",5689);
+Insert into groups VALUES (3,"Biking Clubs","2020-05-12",258456);
+Insert into groups VALUES (4,"Biking Clubs","2020-05-12",54239);
+Insert into groups VALUES (5,"TV Watchers","2020-05-12",59665);
+Insert into groups VALUES (6,"TV Watchers","2020-05-12",482844);
+Insert into groups VALUES (7,"Anime Watching","2020-05-12",452833);
+Insert into groups VALUES (8,"Biking Clubs","2020-05-12",24732);
+Insert into groups VALUES (9,"Anime Watching","2020-05-12",257312);
+Insert into groups VALUES (10,"Anime Watching","2020-05-12",110234);
+
+Insert into groupsmembers VALUES (1,4,"Viewer");
+Insert into groupsmembers VALUES (2,1,"Content Editor");
+Insert into groupsmembers VALUES (3,7,"Content Editor");
+Insert into groupsmembers VALUES (4,3,"Content Editor");
+Insert into groupsmembers VALUES (5,7,"Viewer");
+Insert into groupsmembers VALUES (6,5,"Content Editor");
+Insert into groupsmembers VALUES (7,2,"Content Editor");
+Insert into groupsmembers VALUES (8,2,"Content Editor");
+Insert into groupsmembers VALUES (9,8,"Viewer");
+Insert into groupsmembers VALUES (10,9,"Viewer");
+
+Insert into profile VALUES (1,3);
+Insert into profile VALUES (2,3);
+Insert into profile VALUES (3,2);
+Insert into profile VALUES (4,3);
+Insert into profile VALUES (5,9);
+Insert into profile VALUES (6,9);
+Insert into profile VALUES (7,7);
+Insert into profile VALUES (8,6);
+Insert into profile VALUES (9,1);
+Insert into profile VALUES (10,2);
+
+Insert into profiles VALUES (1,4);
+Insert into profiles VALUES (2,7);
+Insert into profiles VALUES (3,10);
+Insert into profiles VALUES (4,3);
+Insert into profiles VALUES (5,7);
+Insert into profiles VALUES (6,3);
+Insert into profiles VALUES (7,6);
+Insert into profiles VALUES (8,3);
+Insert into profiles VALUES (9,2);
+Insert into profiles VALUES (10,1);
+
+Insert into album VALUES (1,2);
+Insert into album VALUES (2,2);
+Insert into album VALUES (3,2);
+Insert into album VALUES (4,2);
+Insert into album VALUES (5,2);
+Insert into album VALUES (6,2);
+Insert into album VALUES (7,2);
+Insert into album VALUES (8,2);
+Insert into album VALUES (9,2);
+Insert into album VALUES (10,2);
+
+Insert into posts VALUES (1,"image",1);
+Insert into posts VALUES (2,"text",2);
+Insert into posts VALUES (3,"image",3);
+Insert into posts VALUES (4,"text",4);
+Insert into posts VALUES (5,"image",5);
+Insert into posts VALUES (6,"image",6);
+Insert into posts VALUES (7,"image",7);
+Insert into posts VALUES (8,"text",8);
+Insert into posts VALUES (9,"text",9);
+Insert into posts VALUES (10,"image",10);
+
+Insert into picture VALUES (1,1);
+Insert into picture VALUES (2,6);
+Insert into picture VALUES (3,10);
+Insert into picture VALUES (4,8);
+Insert into picture VALUES (5,1);
+Insert into picture VALUES (6,5);
+Insert into picture VALUES (7,8);
+Insert into picture VALUES (8,6);
+Insert into picture VALUES (9,2);
+Insert into picture VALUES (10,5);
+
+/*
+SELECT * FROM users WHERE userid = 1
+INNER JOIN friend ON friend.friendid = friend.userid;
+
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID; */
+
+/*
+SELECT * FROM users;
+SELECT * FROM friend WHERE friendid = 1;
+*/
+/*
+SELECT * 
+FROM tableX 
+INNER JOIN tableY on tableX.X = tableY.Y;*/ 
+
+DELIMITER // 
+   CREATE PROCEDURE getUserFriends (In id integer) 
+   BEGIN
+      /*SELECT name,gender,dob FROM user us
+      JOIN friend frnd ON frnd.friendId = us.userId
+      WHERE frnd.friendId = id;*/
+      
+      SELECT users.name,friend.friendid FROM users,friend WHERE friend.userid=id; 
+    END//
+DELIMITER ;
+
+/*
+SELECT tableX.*,tableY.*  
+FROM tableX,tableY 
+WHERE tableX.X = tableY.Y;*/
 
