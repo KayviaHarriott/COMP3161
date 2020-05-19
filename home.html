@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+        <meta charset="utf-8">
+		<title>My Book | Home</title>	
+		<meta charset="utf-8">
+		<title>My Book | Sign In</title>
+		
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+		<link href="styles/styles2.css" type="text/css" rel="stylesheet" />
+		<script src="javascript.js" type="text/javascript"></script>
+
+		
+	</head>
+		<div class="gridcontainer">
+			<div class="topbar">
+				<div class="header">
+					<span class="logoHeaderMy">My</span><span class="logoHeaderBook">Book</span>
+					<span class="logoAdmin"><i>-admin</i></span>
+                </div>
+			</div>
+			<div class="content">
+				<br><br><br>
+				<div class="welcome">
+					<h2>Welcome!</h2> 
+							
+					<p>What would you like to do today?</p>
+					
+				</div>				
+				<br><br>
+				<a id="getUsers" href="viewAllUsers.html" class="button">View All Users</a> 
+					<span>- A quick overview off all the current users in the system.</span>
+					<br><br>
+				<a id="findUser" href="findUser.html" class="button">Find User</a>
+					<span>- Find a specific user by name.</span>
+					<br><br>
+				<a id="viewPostsByUser" href="viewPostsByUser.html" class="button">View Posts by User</a>
+					<span>- View all posts made by a user.</span>
+					<br><br>
+				<a id="recentActivity" href="recentActivity.html" class="button">Recent Activity</a>
+					<span>- View your most recent activity.</span>
+					<br><br>
+				<a id="checkReports" href="checkReports.html" class="button">Check Reports</a>
+					<span>- View your most recent reports.</span>
+					<br><br>
+					<div id="result">
+						<!-- result appears here -->
+					</div>
+			</div>
+			<div class="exinfo">
+				<br><br><br>
+				<a id="signOut" href="adminLogIn.html" class="button">Sign Out</a>
+			</div>
+		</div>	
+					
+	</body>
+	<script>
+		function getUsername(txtrequest = ""){             
+        $.ajax("getUsers.php", {
+            method: 'GET'             
+            
+        }).done(function(response){
+            let parseHTML = response;
+            $("#result").html(parseHTML);
+            
+        }).fail(function(){
+            alert('There was an issue with the request.');
+        });
+        }
+	</script>
+	
+</html>

@@ -211,7 +211,7 @@ Insert into users VALUES (2,"Tyler Bryant","F","1998-11-03");
 Insert into users VALUES (3,"David Thomas","F","2019-09-11");
 Insert into users VALUES (4,"Lee Harrison","M","2006-11-29");
 Insert into users VALUES (5,"Robert Conley","F","1988-10-19");
-Insert into users VALUES (6,"Terry Chambers MD","M","2014-04-20");
+Insert into users VALUES (6,"Terry Chambers","M","2014-04-20");
 Insert into users VALUES (7,"Jasmine Martinez","M","1989-06-12");
 Insert into users VALUES (8,"Matthew Grimes","F","1971-01-21");
 Insert into users VALUES (9,"Russell Mcpherson","M","1998-02-20");
@@ -305,36 +305,38 @@ Insert into picture VALUES (8,6);
 Insert into picture VALUES (9,2);
 Insert into picture VALUES (10,5);
 
-/*
-SELECT * FROM users WHERE userid = 1
-INNER JOIN friend ON friend.friendid = friend.userid;
-
-SELECT Orders.OrderID, Customers.CustomerName
-FROM Orders
-INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID; */
-
-/*
-SELECT * FROM users;
-SELECT * FROM friend WHERE friendid = 1;
-*/
-/*
-SELECT * 
-FROM tableX 
-INNER JOIN tableY on tableX.X = tableY.Y;*/ 
+DELIMITER // 
+   CREATE PROCEDURE getUser (In id integer) 
+   BEGIN
+      SELECT name from users WHERE userid = id;
+   END//
+DELIMITER ;
 
 DELIMITER // 
    CREATE PROCEDURE getUserFriends (In id integer) 
+   BEGIN   
+      SELECT users.name, users.gender
+      FROM users
+      INNER JOIN friend
+      ON users.userid=friend.userid
+      WHERE friend.friendid = id;
+   END//
+DELIMITER ;
+
+DELIMITER // 
+   CREATE PROCEDURE findpost (In id integer) 
    BEGIN
-      /*SELECT name,gender,dob FROM user us
-      JOIN friend frnd ON frnd.friendId = us.userId
-      WHERE frnd.friendId = id;*/
-      
-      SELECT users.name,friend.friendid FROM users,friend WHERE friend.userid=id; 
+      SELECT postid,posttype FROM posts 
+      WHERE posts.userid = id;
     END//
 DELIMITER ;
 
+
 /*
-SELECT tableX.*,tableY.*  
-FROM tableX,tableY 
-WHERE tableX.X = tableY.Y;*/
+CALL getUser(1);
+CALL getUserFriends(1);
+CALL findpost(1); */
+
+
+
 

@@ -16,23 +16,50 @@ if (mysqli_connect_errno()) {
 }
 
 
-//$query2 = "SELECT author.name, comment.comment FROM author INNER JOIN comment ON author.author_id=comment.comment_id;";
-$query2 = "SELECT * from users";
+/*$query2 = "CALL getUser(1);";*/
+$query2 = "SELECT * FROM users;";
+$result = "";
+
+
 
 if ($result = $conn->query($query2)) {
-    echo nl2br("\n");
-    echo nl2br("\n");
+    echo "<table border='0' cellspacing=15 cellpadding=2>
+            <tr>
+
+            <th>User ID</th>
+
+            <th>Name</th>
+
+            <th>Gender</th>
+
+            <th>Date of Birth</th>
+
+            </tr>";
     while ($row = $result->fetch_row()) {
-        //echo $row[0], ": ";
-        //echo nl2br("\n"); 
-        echo $row[1] , " ";
-        echo nl2br("\n");        
+        
+        echo "<tr>";
+
+        echo "<td>" . $row[0] . "</td>";
+      
+        echo "<td>" . $row[1] . "</td>";
+      
+        echo "<td>" . $row[2] . "</td>";
+      
+        echo "<td>" . $row[3] . "</td>";
+      
+        echo "</tr>";
+
+
+        $result;
+        
        // echo nl2br("\n"); 
     }
 
     /* free result set */
     $result->close();
 }
+
+
 
     /* close connection */
     $conn->close();

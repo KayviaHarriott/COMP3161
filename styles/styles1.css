@@ -1,0 +1,94 @@
+body{
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.gridcontainer{
+    display: grid;
+    grid-template-areas:'signin  signin   photo  photo  photo  photo'
+                        'signin  signin   photo  photo  photo  photo'
+                        'signin  signin   photo  photo  photo  photo'
+                        'signin  signin   photo  photo  photo  photo'
+                        'signin  signin   photo  photo  photo  photo'
+                        'signin  signin   photo  photo  photo  photo'                        
+                        ;
+}
+
+.signin{
+    grid-area: signin;
+    bottom:0;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgb(255, 255, 255);
+    overflow-x: hidden;
+    padding: 5%;
+    z-index: 99;
+}
+
+h1.signins{
+    text-align: center;
+}
+
+.photo{
+    grid-area: photo;        
+    background-image: url('../images/signInBackground.jpg');
+    width: 60%;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgb(255, 255, 255);
+    overflow-x: hidden;
+}
+
+.logoHeaderMy{
+    font-weight: bolder;
+    font-size: 2em;
+    color: #20136C;
+}
+
+.logoHeaderBook{
+    font-weight: bolder;
+    font-size: 2em;
+    color: #F83D3D;
+}
+
+.welcome {
+    line-height: 20%;
+}
+
+.header{
+    text-align: center;
+}
+
+textarea:focus, input:focus{
+    outline: none;
+}
+
+#username, #password{
+    outline: none;
+    border-width: 4px;
+    padding: 2%;
+    border:none;    
+    box-shadow: 0px 1px 2px grey;  
+    width: 80%;
+}
+
+#signin{
+    border: none;
+    background-color: #20136C;
+    color: white;
+    padding: 2%;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: bold;
+    border-radius: 0.5em;
+    width: 30%;   
+}
+
+
+.link:hover {
+    cursor: default;
+  }

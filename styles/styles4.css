@@ -1,0 +1,240 @@
+body{
+    margin: 0px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.gridcontainer{
+    display: grid;
+    grid-template-areas:'topbar    topbar     topbar    topbar    topbar    topbar'
+                        'content   content    content   content   content   content'
+                        'content   content    content   content   content   content'
+                        'content   content    content   content   content   content'
+                        'content   content    content   content   content   content'
+                        'exinfo    exinfo     exinfo    exinfo    exinfo    exinfo'                        
+                        ;
+}
+
+.topbar {
+    grid-area: topbar;
+    background: rgb(255, 255, 255);
+    box-shadow: 0px 0.8px 3px grey;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center; 
+    padding-top: 1%;
+    padding-bottom: 1%;
+
+}
+
+.logoHeaderMy{
+    font-weight: bolder;
+    font-size: 2em;
+    color: #20136C;
+}
+
+.logoHeaderBook{
+    font-weight: bolder;
+    font-size: 2em;
+    color: #F83D3D;
+}
+
+.logoAdmin{
+    font-weight: bolder;
+    font-size: 1em;
+    color: #20136C;
+    top: 50%;
+}
+
+.content{
+    grid-area: content;    
+    padding-left: 3%;
+    color: #20136C;
+}
+
+.exinfo{
+    grid-area: exinfo; 
+    padding-left: 3%;
+}
+
+.welcome{
+    line-height: 0.1em;
+    color: #20136C;
+}
+
+
+a:visited {
+    color: none;
+    text-decoration: none;
+}
+
+a {
+    color:none;
+}
+
+a:visited {
+    color: black;
+    text-decoration: white;
+} 
+
+a:hover {
+    color:none;
+}  
+a:active {
+    color:none;
+} 
+
+
+#result{
+    text-align: center;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+}
+
+/******
+ul{
+    list-style-type: none;
+}
+  
+li{
+    display: inline;
+}
+
+.topbar {
+    grid-area: topbar;
+    background: white;
+    padding-top: 5px;
+    padding-left: 15px;
+    box-shadow: 0px 0.8px 3px grey;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    margin-right: 0px;
+    margin-top: 0px;   
+    text-align: center; 
+}
+
+.content{
+    grid-area: content;    
+    margin-left: 5%;
+}
+
+
+
+
+
+
+
+
+
+#faq:visited {
+    color: none;
+    text-decoration: none;
+}
+
+
+
+.header{
+    text-align: center;
+}
+
+
+.logoHeaderMy{
+    font-weight: normal;
+    font-size: 2em;
+    color: #20136C;
+}
+
+.logoHeaderBook{
+    font-weight: bolder;
+    font-size: 2em;
+    color: #F83D3D;
+}
+
+*/
+#getUsers, #findUser, #viewPostsByUser, #recentActivity, #checkReports{
+    
+    background-color: rgb(180, 180, 180);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;/*
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;*/
+
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+
+    border-style: solid;
+    border-color: #20136C;
+    border-radius: 0.2em;
+    border-width: 0.1em;
+    background-color: white;
+    color: #20136C;
+    font-weight: bold;
+    width: 200px;
+   
+}
+
+
+.exinfo{
+    grid-area: exinfo; 
+    margin-left: 85%; 
+    margin-right:0;
+}
+#signOut{
+    /******/
+    background-color: rgb(180, 180, 180);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin-right: 20%;
+
+    border-style: solid;
+    border-color: #20136C;
+    border-radius: 0.2em;
+    border-width: 0.1em;
+    background-color: #20136C;
+    color: white;
+    font-weight: normal;
+    width: 100px;
+  }
+
+.button {
+    
+}
+
+#return{
+    background-color: rgb(180, 180, 180);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    margin-right: 20%;
+
+    border-style: solid;
+    border-color: #20136C;
+    border-radius: 0.2em;
+    border-width: 0.1em;
+    background-color: #20136C;
+    color: white;
+    font-weight: normal;
+    width: 100px;
+}
