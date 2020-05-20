@@ -43,8 +43,8 @@
                 /*$query2 = "CALL getUser(1);";*/
                 $findName = $_GET["name"];
                 $var = 1;
-
-                $query2 = "SELECT * FROM users WHERE name LIKE '%$findName%'";
+                $int = (int)$findName;
+                $query2 = "CALL getUserFriends($int);";
 
                 /*
                 Welcome <?php echo $_GET["name"]; ?><br>
@@ -52,20 +52,18 @@
 
                 if ($result = $conn->query($query2)) {
                     
-                    
+
 
                     echo nl2br("\n");
                     echo nl2br("\n");
+                    echo "Here are the friends of the user with user ID: $findName"; 
+                    echo nl2br("\n"); 
+                    echo nl2br("\n");  
+                         
                     while ($row = $result->fetch_row()) {
-                        echo "ID#: ",$row[0];
-                        echo nl2br("\n"); 
-                        echo "Name: ",$row[1], " (",$row[2],") ";
-                        echo nl2br("\n"); 
                         
-                        echo "DOB: ",$row[3];
-                        
-                        echo nl2br("\n");  
-                        echo nl2br("\n");        
+                       
+                        echo $row[0]; echo nl2br("\n");    
                         $result;
                         
                     // echo nl2br("\n"); 

@@ -44,25 +44,21 @@
                 $findName = $_GET["name"];
                 $var = 1;
 
-                $query2 = "SELECT * FROM users WHERE name LIKE '%$findName%'";
+                $query2 = "SELECT * FROM comments WHERE commentid LIKE '%$findName%'";
 
                 /*
                 Welcome <?php echo $_GET["name"]; ?><br>
                 Your email address is: <?php echo $_GET["email"]; ?> */
 
-                if ($result = $conn->query($query2)) {
-                    
+                if ($result = $conn->query($query2)) {                   
                     
 
                     echo nl2br("\n");
                     echo nl2br("\n");
                     while ($row = $result->fetch_row()) {
-                        echo "ID#: ",$row[0];
-                        echo nl2br("\n"); 
-                        echo "Name: ",$row[1], " (",$row[2],") ";
-                        echo nl2br("\n"); 
-                        
-                        echo "DOB: ",$row[3];
+                        echo  "User ID: ", $row[0], "-";
+                        echo  $row[1];
+                       
                         
                         echo nl2br("\n");  
                         echo nl2br("\n");        
