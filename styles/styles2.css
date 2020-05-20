@@ -143,7 +143,7 @@ li{
 }
 
 */
-#getUsers, #findUser, #viewPostsByUser, #recentActivity, #checkReports{
+#getUsers, #findUser, #viewPostsByUser, #recentActivity, #checkReports, #addPost{
     
     background-color: rgb(180, 180, 180);
     border: none;
